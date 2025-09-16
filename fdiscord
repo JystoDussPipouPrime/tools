@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+DEB_URL="https://discord.com/api/download?platform=linux&format=deb"
+TMP_DEB="/tmp/discord_latest.deb"
+
+wget -O "$TMP_DEB" "$DEB_URL"
+
+sudo apt update
+sudo apt install -y "$TMP_DEB"
+
+rm "$TMP_DEB"
