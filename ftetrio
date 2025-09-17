@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+DEB_URL="https://tetr.io/about/desktop/builds/10/TETR.IO%20Setup.deb"
+TMP_DEB="/tmp/tetrio_latest.deb"
+
+wget -O "$TMP_DEB" "$DEB_URL"
+
+sudo apt update
+sudo apt install -y "$TMP_DEB"
+
+rm "$TMP_DEB"
+
+# config.ttc
+# {"controls":{"style":"custom","custom":{"moveLeft":["ARROWLEFT"],"moveRight":["ARROWRIGHT"],"softDrop":["ARROWUP"],"hardDrop":["ARROWDOWN"],"rotateCCW":["KEYZ"],"rotateCW":["KEYX"],"rotate180":["SHIFTLEFT"],"hold":["KEYC"],"exit":["ESCAPE","KEYR"],"retry":["KEYT"],"chat":["BACKQUOTE"],"target1":["DIGIT1"],"target2":["DIGIT2"],"target3":["DIGIT3"],"target4":["DIGIT4"],"menuUp":["ARROWUP"],"menuDown":["ARROWDOWN"],"menuLeft":["ARROWLEFT"],"menuRight":["ARROWRIGHT"],"menuBack":["ESCAPE"],"menuConfirm":["KEYA"],"openSocial":["TAB"]},"sensitivity":0.5,"vibration":1},"handling":{"arr":1,"das":5.4,"dcd":0,"sdf":41,"safelock":true,"cancel":false,"may20g":true},"volume":{"disable":false,"music":0,"sfx":0.10000000000000002,"stereo":0.5,"others":true,"attacks":true,"next":false,"noreset":true,"oof":true,"scrollable":true,"bgmtweak":{}},"video":{"graphics":"low","caching":"medium","actiontext":"all","particles":"0.1","background":"0.76","bounciness":"0","shakiness":"0","gridopacity":0.1,"boardopacity":0.85,"shadowopacity":0.15,"zoom":1,"alwaystiny":false,"nosuperlobbyanim":false,"nozenithanim":false,"colorshadow":false,"holdlocked":true,"sidebyside":true,"spin":false,"chatfilter":false,"background_url":null,"background_usecustom":null,"nochat":false,"hideroomids":false,"emotes":true,"emotes_anim":true,"siren":true,"powersave":false,"invert":false,"nobg":false,"chatbg":true,"replaytoolsnocollapse":true,"kos":true,"fire":false,"focuswarning":true,"hidenetwork":false,"guide":false,"lowrescounters":false,"desktopnotifications":true,"lowres":false,"webgl":"webgl2","bloom":"0","chroma":"0","flashwave":"0"},"gameoptions":{"pro_40l":false,"pro_40l_alert":false,"pro_40l_retry":false,"stride_40l":false,"pro_blitz":false,"pro_blitz_alert":false,"pro_blitz_retry":false,"stride_blitz":false},"electron":{"loginskip":"always","frameratelimit":"2x","presence":true,"taskbarflash":true,"autoupdate":true,"anglecompat":false,"adblock":false},"notifications":{"suppress":false,"forcesound":true,"online":"ingame","offline":"off","dm":"both","dm_pending":"both","invite":"both","other":"both"}}
