@@ -18,11 +18,12 @@ personal tools that cost me time now in order to save time later.
 | Name          | Description                                                                        |
 | ------------- |:----------------------------------------------------------------------------------:|
 | fclean_all    | Go through each folder recursively, find a Makefile, and try running `make fclean` |
-| fvscode_all   | Go through each folder recursively, and `rm -rf .vscode`                           |
+| ❌fvscode_all | Go through each folder recursively, and `rm -rf .vscode`                           |
 | fgit          | Repair current repo when you run `error: object file .git/objects/*/* is empty`    |
 | fdiscord      | Install Discord via `wget` .deb (because i hate snap)                              |
 | ftetrio       | Install Tetr.io via `wget` .deb (+ config.ttc/4w.ttp inside)                       |
-
+| fprotonVPN    | Install ProtonVPN via `wget` .deb                                                  |
+| fue5          | Launch Unreal Engine 5 from terminal                                               |
 
 <a name="guide"></a>
 # quick guide to implement scripts 🌱
@@ -76,6 +77,7 @@ Now you can run it directly:
 <a name="todo"></a>
 ## TODO
 - [ ] fvscode_all need to add protection on the /home/user/.vscode one
+- [ ] fue5 flexible path
 - [x] quick guide to implement /usr/local/bin or .bashrc
 - [ ] revamp names because they don't make sense
 - [ ] ftetrio $ARG for creating desired .ttc / .ttp
