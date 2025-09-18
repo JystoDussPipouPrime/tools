@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /
+
+./media/$USER/CASHU/UnrealEngine/Engine/Binaries/Linux/UnrealEditor
