@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# https://support.anydesk.com/docs/install-anydesk
+
+# libc6 (>= 2.7)
+# libgcc1 (>= 1:4.1.1)
+# libglib2.0-0 (>= 2.16.0)
+# libgtk2.0-0 (>= 2.20.1)
+# libstdc++6 (>= 4.1.1)
+# libx11-6, libxcb1, libxcb-shm0
+# libpango1.0-0, libcairo2
+# libxrandr2 (>= 1.3), libx11-xcb1
+# libxtst6, libxfixes3, libxdamage1
+# libgtkglext1
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <install-gpg/install-deb/remove>"
+    exit 1
+fi
+
+if [ "$1" = "install-gpg" ]; then
+    sudo apt update && sudo apt upgrade -y
+    sudo apt install -y wget gnupg libc6 libgcc1 libglib2.0-0 libgtk2.0-0 libstdc++6 \
+        libx11-6 libxcb1 libxcb-shm0 libcairo2 libxrandr2 \
+        libx11-xcb1 libxtst6 libxfixes3 libxdamage1 libgtkglext1
+
+    wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | gpg --dearmor | sudo tee /usr/share/keyrings/anydesk.gpg > /dev/null
+
+    echo "deb [signed-by=/usr/share/keyrings/anydesk.gpg] http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk.list
+
+    sudo apt update
+    sudo apt install -y anydesk
+elif [ "$1" = "install-deb" ]; then
+
+    DEB_URL="https://download.anydesk.com/linux/anydesk_7.1.0-1_amd64.deb"
+    DEB_FILE="/tmp/anydesk.deb"
+    wget -O "$DEB_FILE" "$DEB_URL"
+    sudo dpkg -i "$DEB_FILE"
+    sudo apt install -f -y
+    rm -f "$DEB_FILE"
+
+elif [ "$1" = "remove" ]; then
+
+    sudo apt remove --purge -y anydesk
+    sudo rm -f /etc/apt/sources.list.d/anydesk.list
+    sudo rm -f /usr/share/keyrings/anydesk.gpg
+    sudo apt update
+    sudo apt autoremove -y
+
+else
+    echo "Usage: $0 <install-gpg/install-deb/remove>"
+fi
+
+# if Ubuntu 22.04
+# wget http://ftp.fr.debian.org/debian/pool/main/p/pangox-compat/libpangox-1.0-0_0.0.2-5.1_amd64.deb
+# sudo apt install ./libpangox-1.0-0_0.0.2-5.1_amd64.deb

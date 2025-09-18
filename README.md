@@ -23,6 +23,7 @@ personal tools that cost me time now in order to save time later.
 | fdiscord      | Install Discord via `wget` .deb (because i hate snap)                              |
 | ftetrio       | Install Tetr.io via `wget` .deb (+ config.ttc/4w.ttp inside)                       |
 | fprotonVPN    | Install ProtonVPN via `wget` .deb                                                  |
+| fanydesk      | Install AnyDesk via `wget` .deb OR official repo                                   |
 | fue5          | Launch Unreal Engine 5 from terminal                                               |
 
 <a name="guide"></a>
