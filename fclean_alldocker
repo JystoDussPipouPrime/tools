@@ -1,0 +1,10 @@
+#!/bin/bash
+
+docker compose down --volumes --remove-orphans
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker image rm -f $(docker images -q)
+docker volume rm $(docker volume ls -q)
+docker network prune -f
+docker volume prune -af
+docker system prune -af

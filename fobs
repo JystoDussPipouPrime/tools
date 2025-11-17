@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# https://obsproject.com/kb/linux-installation
+# https://github.com/dimtpap/obs-pipewire-audio-capture
+# https://doc.ubuntu-fr.org/pipewire
+
+set -e
+
+sudo apt update && sudo apt upgrade -y
+
+sudo add-apt-repository ppa:obsproject/obs-studio -y
+
+sudo apt update
+
+sudo apt install obs-studio -y
+
+sudo apt install pipewire pipewire-audio-client-libraries \
+                 pipewire-pulse pipewire-alsa pipewire-jack -y
+
+
+
+# IF PulseAudio RUNS INSTEAD OF PipeWire
+# systemctl --user --now disable pulseaudio.{socket,service}
+# systemctl --user mask pulseaudio
+
+systemctl --user --now enable pipewire{,-pulse}.{socket,service} filter-chain
+systemctl --user --now enable wireplumber
+
+# DL THIS
+# https://github.com/dimtpap/obs-pipewire-audio-capture/releases
+# └── plugins
+#    └── linux-pipewire-audio
+#        ├── bin
+#        └── data
+echo "reboot me"
